@@ -6,5 +6,7 @@ const {
 
 const router = express.Router();
 
-router.get("/", getAllAlbums);
+router.get("/", getAllTickets);
 router.post("/", createTicket);
+
+module.exports = router;
