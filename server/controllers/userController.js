@@ -1,4 +1,6 @@
 const User = require("../models/userModel");
+const Ticket = require("../models/ticketModel");
+
 const jwt = require("jsonwebtoken");
 
 const createToken = (_id) => {
@@ -44,7 +46,24 @@ const signupUser = async (req, res) => {
   }
 };
 
+const getUserTickets = async (req, res) => {
+  try {
+    const { userId } = req.body;
+
+    const tickets = await Ticket.find({ user: userId });
+
+    return res.status(200).json(tickets);
+  } catch (err) {
+    console.error("Error fetching user's tickets:", err);
+    return res.status(500).json({
+      message: "Failed to fetch user's tickets",
+      error: err.message,
+    });
+  }
+};
+
 module.exports = {
   loginUser,
   signupUser,
+  getUserTickets,
 };

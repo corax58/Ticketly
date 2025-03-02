@@ -35,8 +35,8 @@ export const authSlice = createSlice({
     loadUser: (state) => {
       const user = localStorage.getItem("user");
       if (user) {
-        state.user = JSON.parse(user);
         state.isAuthenticated = true;
+        state.user = JSON.parse(user);
       }
     },
   },
