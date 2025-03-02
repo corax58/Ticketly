@@ -9,6 +9,7 @@ const app = express();
 
 //routers
 const userRouter = require("./routes/user");
+const ticketRouter = require("./routes/ticket");
 
 //middlewares
 app.use(cors());
@@ -16,6 +17,7 @@ app.use(express.json());
 
 //routes
 app.use("/api/user", userRouter);
+app.use("/api/ticket", ticketRouter);
 
 mongoose
   .connect(process.env.MONGO_URI)

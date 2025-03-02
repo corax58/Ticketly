@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
-const ticketSchema = Schema({
+const ticketSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -13,8 +13,12 @@ const ticketSchema = Schema({
     required: true,
     default: "open",
   },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
   timestamps: true,
 });
 
-const Ticket = mongoose.model("Ticket", ticketSchema);
-module.exports = Ticket;
+module.exports = mongoose.model("Ticket", ticketSchema);
