@@ -1,9 +1,11 @@
 import { DataTable } from "@/components/data-table";
+import StatusFilter from "@/components/StatusFilter";
 import { userColumns } from "@/components/tables/tickets/columns";
 import { Button } from "@/components/ui/button";
 import { useFetchUserTickets } from "@/hooks/useFetchUserTickets";
 import { Loader } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
+import { FitlerData } from "./Admin/AllTickets";
 
 const MyTickets = () => {
   const userString = localStorage.getItem("user");
@@ -11,6 +13,12 @@ const MyTickets = () => {
   const user = JSON.parse(userString!);
 
   const { data, isError, isLoading, error } = useFetchUserTickets(user?._id!);
+
+  const [searchParams] = useSearchParams();
+
+  const status = searchParams.get("status");
+
+  const filteredData = FitlerData(data!, status);
 
   if (isLoading)
     return (
@@ -24,18 +32,21 @@ const MyTickets = () => {
         Something went wrong, {error.message}
       </p>
     );
-  if (data)
+  if (filteredData)
     return (
       <div>
-        <div className=" flex w-full justify-center pt-10">
+        <div className=" flex w-full justify-center pt-10 px-5">
           <div className=" container">
-            <div className=" flex justify-between items-center py-2">
+            <div className=" flex justify-between items-end py-2">
               <p className=" text-xl font-bold">My tickets</p>
-              <Link to={"/my-tickets/new"}>
-                <Button>New ticket</Button>
-              </Link>
+              <div className="flex gap-2 flex-col-reverse md:flex-row items-end">
+                <StatusFilter />
+                <Link to={"/my-tickets/new"}>
+                  <Button>New ticket</Button>
+                </Link>
+              </div>
             </div>
-            <DataTable columns={userColumns} data={data} />
+            <DataTable columns={userColumns} data={filteredData} />
           </div>
         </div>
       </div>
