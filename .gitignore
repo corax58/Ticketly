@@ -1,2 +1,6 @@
 server/.env
 server/node_modules
+
+ticketly/.env
+ticketly/node_modules
+

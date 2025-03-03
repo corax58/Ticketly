@@ -7,6 +7,7 @@ import showcase from "/images/showcase.png";
 function App() {
   return (
     <div className=" h-screen overflow-clip w-full">
+      <div className="absolute inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]"></div>
       <div className=" h-20 w-full flex justify-between items-center px-5 md:px-10">
         <div className=" flex items-center gap-2">
           <Bug />
@@ -20,8 +21,11 @@ function App() {
       </div>
       <div className=" w-full h-full flex flex-col items-center gap-2 md:gap-5 ">
         <div className=" h-52 my-10  md:h-96 flex flex-col justify-center gap-5 px-2 items-center">
-          <div className=" text-3xl md:text-4xl xl:text-5xl  font-semibold w-full   md:w-1/2 text-center">
-            Manage Tickets with Role-Based Access
+          <div className=" text-3xl md:text-4xl xl:text-5xl  font-bold md:font-black w-full  flex gap-2 flex-wrap md:w-1/2 ">
+            <p>Manage</p>
+            <p className=" text-purple-500">Tickets</p>
+            <p>with</p>
+            <p className=" text-purple-500">Role-Based Access</p>
           </div>
           <p className=" text-lg md:text-xl xl:text-2xl md:w-2/3 text-center">
             Seamless Ticket Creation for Different User Roles – Empowering
@@ -33,11 +37,11 @@ function App() {
             </Button>
           </Link>
         </div>
-        <div className=" w-[300px] md:w-[600px] lg:w-[800px] p-5 md:p-10   rounded-3xl md:rounded-4xl bg-sky-300 ">
+        <div className=" w-[300px] md:w-[600px] lg:w-[800px] p-5 md:p-7   rounded-3xl md:rounded-4xl bg-indigo-300 ">
           <img
             src={showcase}
             alt="show caseimage"
-            className=" object-contain rounded-2xl md:rounded-4xl border"
+            className=" object-contain rounded-2xl md:rounded-3xl border"
           />
         </div>
       </div>
