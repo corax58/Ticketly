@@ -4,6 +4,7 @@ interface User {
   _id: string;
   name: string;
   email: string;
+  role: string;
   token: string;
 }
 
@@ -27,7 +28,6 @@ export const authSlice = createSlice({
       localStorage.setItem("user", JSON.stringify(action.payload));
     },
     logoutUser: (state) => {
-      console.log("hello");
       state.isAuthenticated = false;
       state.user = null;
       localStorage.removeItem("user");
