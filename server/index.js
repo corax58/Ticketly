@@ -10,6 +10,7 @@ const app = express();
 //routers
 const userRouter = require("./routes/user");
 const ticketRouter = require("./routes/ticket");
+const dashboardRouter = require("./routes/dashboard");
 
 //middlewares
 app.use(cors());
@@ -18,6 +19,7 @@ app.use(express.json());
 //routes
 app.use("/api/user", userRouter);
 app.use("/api/ticket", ticketRouter);
+app.use("/api/dashboard", dashboardRouter);
 
 mongoose
   .connect(process.env.MONGO_URI)
