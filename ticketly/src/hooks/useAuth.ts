@@ -1,3 +1,4 @@
+import api from "@/api/axiosClient";
 import { loginUser } from "@/store/features/authSlice";
 import axios from "axios";
 import { useState } from "react";
@@ -18,13 +19,13 @@ export function useAuth() {
     setIsSucces(false);
     setError("");
     setIsError(false);
-    const res = await axios
-      .post("http://localhost:4000/api/user/login", values)
+    const res = await api
+      .post("/user/login", values)
       .then((res) => {
         setIsLoading(false);
         setIsSucces(true);
         dispatch(loginUser(res.data));
-        navigate("/");
+        navigate("/my-tickets");
       })
       .catch((err) => {
         setIsError(true);
@@ -38,13 +39,13 @@ export function useAuth() {
     setIsSucces(false);
     setError("");
     setIsError(false);
-    const res = await axios
-      .post("http://localhost:4000/api/user/signup", values)
+    const res = await api
+      .post("/user/signup", values)
       .then((res) => {
         setIsLoading(false);
         setIsSucces(true);
         dispatch(loginUser(res.data));
-        navigate("/");
+        navigate("/my-tickets");
       })
       .catch((err) => {
         setIsError(true);

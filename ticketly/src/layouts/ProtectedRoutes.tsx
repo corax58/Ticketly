@@ -6,7 +6,6 @@ import { Navigate, Outlet } from "react-router";
 const ProtectedRoutes = () => {
   const user = localStorage.getItem("user");
   const dispatch = useDispatch();
-  console.log(user);
 
   useEffect(() => {
     dispatch(loadUser());
