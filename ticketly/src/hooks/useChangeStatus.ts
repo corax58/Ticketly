@@ -3,16 +3,14 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { Ticket } from "@/types/ticket";
 import { QueryClient, useMutation } from "@tanstack/react-query";
+import api from "@/api/axiosClient";
 
 export function useChangeStatus(id: string) {
   const queryClient = new QueryClient();
 
   const navigate = useNavigate();
   const changeStatus = async (status: string) => {
-    const res = await axios.patch(
-      import.meta.env.VITE_API_URL + `/ticket/${id}`,
-      { status }
-    );
+    const res = await api.patch(`/ticket/${id}`, { status });
 
     return res.data;
   };
@@ -20,7 +18,6 @@ export function useChangeStatus(id: string) {
   return useMutation({
     mutationFn: changeStatus,
     onSuccess: () => {
-      navigate("/dashboard/" + id);
       queryClient.invalidateQueries({ queryKey: [`ticketId ${id}`] });
     },
   });

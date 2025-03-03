@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { Ticket } from "@/types/ticket";
 import { QueryClient, useMutation } from "@tanstack/react-query";
+import api from "@/api/axiosClient";
 
 export function useDeleteTicket(id: string) {
   const queryClient = new QueryClient();
@@ -10,9 +11,7 @@ export function useDeleteTicket(id: string) {
   const navigate = useNavigate();
 
   const deleteTicket = async () => {
-    const res = await axios.delete(
-      import.meta.env.VITE_API_URL + `/ticket/${id}`
-    );
+    const res = await api.delete(`/ticket/${id}`);
 
     return res.data;
   };
@@ -20,7 +19,7 @@ export function useDeleteTicket(id: string) {
   return useMutation({
     mutationFn: deleteTicket,
     onSuccess: () => {
-      navigate("/dashboard");
+      navigate("/my-tickets");
       queryClient.invalidateQueries({ queryKey: ["tickets"] });
     },
   });

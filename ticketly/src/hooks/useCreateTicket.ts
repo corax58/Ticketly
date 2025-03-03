@@ -1,3 +1,4 @@
+import api from "@/api/axiosClient";
 import { QueryClient, useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
@@ -8,9 +9,7 @@ export function useCreateTicket() {
   const queryClient = new QueryClient();
 
   const create = async (values: any) =>
-    await axios
-      .post("http://localhost:4000/api/ticket", values)
-      .then((res) => res.data);
+    await api.post("/ticket", values).then((res) => res.data);
 
   return useMutation({
     mutationFn: create,
