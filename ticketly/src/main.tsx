@@ -32,13 +32,22 @@ createRoot(document.getElementById("root")!).render(
               <Route element={<NavigationLayout />}>
                 <Route path="admin">
                   <Route index element={<Admin />} />
-                  <Route path="all-tickets" element={<AllTickets />} />
-                  <Route path="all-tickets/:id" element={<TicketPage />} />
+                  <Route path="all-tickets">
+                    <Route index element={<AllTickets />} />
+                    <Route
+                      path=":id"
+                      element={<TicketPage isAdminRoute={true} />}
+                    />
+                  </Route>
                   <Route path="dashboard" element={<Dashboard />} />
                 </Route>
                 <Route path="my-tickets">
                   <Route index element={<MyTickets />} />
                   <Route path="new" element={<New />} />
+                  <Route
+                    path=":id"
+                    element={<TicketPage isAdminRoute={false} />}
+                  />
                 </Route>
               </Route>
             </Route>
