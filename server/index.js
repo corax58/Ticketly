@@ -30,7 +30,7 @@ app.use(
   dashboardRouter
 );
 app.get("/api/ping", (req, res) => {
-  res.status(200);
+  res.status(200).json({ message: "OK" });
 });
 
 mongoose
