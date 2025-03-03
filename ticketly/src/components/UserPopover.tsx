@@ -10,8 +10,19 @@ import { loadUser, logoutUser } from "@/store/features/authSlice";
 import { RootState } from "@/store/store";
 import { LogOut } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { Button } from "./ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 const UserPopover = () => {
   const dispatch = useDispatch();
@@ -19,6 +30,7 @@ const UserPopover = () => {
   const isAuthenticated = useSelector(
     (state: RootState) => state.auth.isAuthenticated
   );
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(loadUser());
@@ -40,14 +52,32 @@ const UserPopover = () => {
                 <p className="font-light text-sm">{user?.email}</p>
               </div>
               <div className="w-full h-px bg-neutral-300"></div>
-
-              <button
-                className="flex items-center gap-2 hover:bg-neutral-100 p-1 rounded w-full "
-                onClick={() => dispatch(logoutUser())}
-              >
-                <LogOut size={20} className="" />
-                <p className=" ">Logout</p>
-              </button>
+              <AlertDialog>
+                <AlertDialogTrigger>
+                  <button className="flex items-center cursor-pointer gap-2 hover:bg-neutral-100 p-1 rounded w-full ">
+                    <LogOut size={20} className="" />
+                    <p className=" ">Logout</p>
+                  </button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>
+                      Are you absolutely sure you want to logout?
+                    </AlertDialogTitle>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>No</AlertDialogCancel>
+                    <AlertDialogAction
+                      onClick={() => {
+                        dispatch(logoutUser());
+                        navigate("/login");
+                      }}
+                    >
+                      Yes
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
             </PopoverContent>
           </Popover>
         </>

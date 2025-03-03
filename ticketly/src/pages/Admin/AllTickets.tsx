@@ -12,7 +12,7 @@ export const FitlerData = (data: Ticket[], status: string | null) => {
 };
 
 const AllTickets = () => {
-  const { data, isError, isLoading } = useFetchTickets();
+  const { data, isError, isLoading, error } = useFetchTickets();
 
   const [searchParams] = useSearchParams();
 
@@ -27,7 +27,11 @@ const AllTickets = () => {
       </div>
     );
   if (isError)
-    return <p className=" text-red-500 p-10">Something went wrong</p>;
+    return (
+      <p className=" text-red-500 p-10">
+        Something went wrong, {error.message}
+      </p>
+    );
   if (filteredData)
     return (
       <div>
@@ -37,6 +41,7 @@ const AllTickets = () => {
               <p className=" text-xl font-bold px-2">All tickets</p>
               <StatusFilter />
             </div>
+
             <DataTable columns={adminColumns} data={filteredData} />
           </div>
         </div>
