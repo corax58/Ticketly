@@ -29,6 +29,9 @@ app.use(
   authorizeRole("admin"),
   dashboardRouter
 );
+app.get("/api/ping", (req, res) => {
+  res.status(200);
+});
 
 mongoose
   .connect(process.env.MONGO_URI)
