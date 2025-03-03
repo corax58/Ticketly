@@ -17,6 +17,8 @@ import MyTickets from "./pages/MyTickets.tsx";
 import AllTickets from "./pages/Admin/AllTickets.tsx";
 import Admin from "./pages/Admin/Admin.tsx";
 import Dashboard from "./pages/Admin/Dashboard.tsx";
+import AdminRoutes from "./layouts/AdminRoutes.tsx";
+import AuthLayout from "./layouts/AuthLayout.tsx";
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
@@ -26,28 +28,26 @@ createRoot(document.getElementById("root")!).render(
         <BrowserRouter>
           <Routes>
             <Route index element={<App />} />
-            <Route path="signup" element={<Signup />} />
-            <Route path="login" element={<Login />} />
+            <Route element={<AuthLayout />}>
+              <Route path="signup" element={<Signup />} />
+              <Route path="login" element={<Login />} />
+            </Route>
             <Route element={<ProtectedRoutes />}>
               <Route element={<NavigationLayout />}>
-                <Route path="admin">
-                  <Route index element={<Admin />} />
-                  <Route path="all-tickets">
-                    <Route index element={<AllTickets />} />
-                    <Route
-                      path=":id"
-                      element={<TicketPage isAdminRoute={true} />}
-                    />
+                <Route element={<AdminRoutes />}>
+                  <Route path="admin">
+                    <Route index element={<Admin />} />
+                    <Route path="all-tickets">
+                      <Route index element={<AllTickets />} />
+                      <Route path=":id" element={<TicketPage />} />
+                    </Route>
+                    <Route path="dashboard" element={<Dashboard />} />
                   </Route>
-                  <Route path="dashboard" element={<Dashboard />} />
                 </Route>
                 <Route path="my-tickets">
                   <Route index element={<MyTickets />} />
                   <Route path="new" element={<New />} />
-                  <Route
-                    path=":id"
-                    element={<TicketPage isAdminRoute={false} />}
-                  />
+                  <Route path=":id" element={<TicketPage />} />
                 </Route>
               </Route>
             </Route>
