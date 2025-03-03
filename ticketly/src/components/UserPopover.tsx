@@ -29,7 +29,7 @@ const UserPopover = () => {
         <>
           <Popover>
             <PopoverTrigger className="">
-              <Avatar className="  ">
+              <Avatar className=" cursor-pointer ">
                 <AvatarImage src="https://storage.needpix.com/rsynced_images/blank-profile-picture-973460_1280.png" />
                 <AvatarFallback>Acc</AvatarFallback>
               </Avatar>
