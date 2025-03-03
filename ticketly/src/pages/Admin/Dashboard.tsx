@@ -29,12 +29,12 @@ const Dashboard = () => {
   if (data)
     return (
       <div className="flex w-full justify-center pt-10 px-2 xl:px-16">
-        <div className=" container flex justify-between  gap-10 flex-col-reverse lg:flex-row ">
-          <StatusBarchart chartData={chartData} />
-          <div className=" flex flex-col md:flex-row lg:flex-col gap-5 ">
+        <div className=" container flex justify-between  gap-5 flex-col ">
+          <div className=" flex w-full flex-col md:flex-row   gap-5 ">
             <StatusPiechart chartData={chartData} total={data.total} />
             <LatestTickets />
           </div>
+          <StatusBarchart chartData={chartData} />
         </div>
       </div>
     );

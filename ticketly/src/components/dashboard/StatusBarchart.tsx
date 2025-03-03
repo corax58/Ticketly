@@ -28,16 +28,13 @@ const chartConfig = {
 
 const StatusBarchart = ({ chartData }: { chartData: chartData[] }) => {
   return (
-    <Card className=" lg:w-1/2 h-min shadow-none">
+    <Card className="   shadow-none">
       <CardHeader>
         <CardTitle>Bar Chart - Multiple</CardTitle>
         <CardDescription>All time</CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer
-          config={chartConfig}
-          className="min-h-[200px] w-full -ml-5  "
-        >
+        <ChartContainer config={chartConfig} className="h-80 w-full -ml-5  ">
           <BarChart accessibilityLayer data={chartData}>
             <CartesianGrid vertical={false} />
             <XAxis

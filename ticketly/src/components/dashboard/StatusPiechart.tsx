@@ -51,7 +51,7 @@ const StatusPiechart = ({
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px] h-full border w-full md:w-max lg:w-full rounded-2xl"
+          className="mx-auto aspect-square max-h-[250px] h-full border w-72 xl:w-96  rounded-2xl"
         >
           <PieChart>
             <ChartTooltip

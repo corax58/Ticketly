@@ -23,7 +23,7 @@ const LatestTickets = () => {
     return <p className=" text-red-500 p-10">Something went wrong</p>;
   if (data)
     return (
-      <Card className="  w-full md:w-96 shadow-none">
+      <Card className="  w-full  shadow-none">
         <CardHeader>
           <CardTitle className=" text-xl">Latest tickets</CardTitle>
           <CardDescription>the latest 5 tickets</CardDescription>
@@ -32,13 +32,13 @@ const LatestTickets = () => {
           {data.map((ticket) => (
             <div
               key={ticket._id}
-              className=" w-full flex justify-between border-b pb-2"
+              className=" w-full flex justify-between border-b pb-2 gap-2"
             >
               <Link
                 to={`/admin/all-tickets/${ticket._id}`}
                 className=" flex flex-col group"
               >
-                <p className="font-semibold text-lg text-ellipsis truncate group-hover:underline  w-40 lg:w-52">
+                <p className="font-semibold text-lg text-ellipsis truncate group-hover:underline w-60 md:w-72 lg:w-[500px]  ">
                   {ticket.title}
                 </p>
                 <div className=" text-xs font-thin">
