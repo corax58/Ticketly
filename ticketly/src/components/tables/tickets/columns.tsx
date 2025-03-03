@@ -26,7 +26,7 @@ export const adminColumns: ColumnDef<Ticket>[] = [
     },
     cell: ({ row }) => {
       return (
-        <Link to={`/all-tickets/${row.original._id}`}>
+        <Link to={`/admin/all-tickets/${row.original._id}`}>
           {row.original.title}
         </Link>
       );
@@ -51,6 +51,9 @@ export const adminColumns: ColumnDef<Ticket>[] = [
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
+    },
+    cell: ({ row }) => {
+      return row.original.createdAt.toString().slice(0, 10);
     },
   },
 ];
@@ -93,6 +96,9 @@ export const userColumns: ColumnDef<Ticket>[] = [
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
+    },
+    cell: ({ row }) => {
+      return row.original.createdAt.toString().slice(0, 10);
     },
   },
 ];
