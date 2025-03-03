@@ -1,5 +1,4 @@
 import { Status } from "@/types/ticket";
-import React from "react";
 
 export interface Props {
   status: Status;
