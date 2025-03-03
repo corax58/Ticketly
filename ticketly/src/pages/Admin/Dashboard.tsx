@@ -32,7 +32,7 @@ const Dashboard = () => {
         <div className=" container flex justify-between  gap-10 flex-col-reverse lg:flex-row ">
           <StatusBarchart chartData={chartData} />
           <div className=" flex flex-col md:flex-row lg:flex-col gap-5 ">
-            <StatusPiechart chartData={chartData} />
+            <StatusPiechart chartData={chartData} total={data.total} />
             <LatestTickets />
           </div>
         </div>

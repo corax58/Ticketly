@@ -35,7 +35,13 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-const StatusPiechart = ({ chartData }: { chartData: chartData[] }) => {
+const StatusPiechart = ({
+  chartData,
+  total,
+}: {
+  chartData: chartData[];
+  total: number;
+}) => {
   return (
     <Card className="flex flex-col shadow-none">
       <CardHeader className="items-center pb-0">
@@ -74,7 +80,7 @@ const StatusPiechart = ({ chartData }: { chartData: chartData[] }) => {
                           y={viewBox.cy}
                           className="fill-foreground text-3xl font-bold"
                         >
-                          {"10"}
+                          {total}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
