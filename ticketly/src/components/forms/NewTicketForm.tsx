@@ -43,7 +43,7 @@ const NewTicketForm = () => {
   }, [isSuccess, isError]);
 
   return (
-    <div>
+    <div className=" px-5">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <FormField

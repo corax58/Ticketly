@@ -6,7 +6,9 @@ const NavigationLayout = () => {
   return (
     <>
       <Navbar />
-      <Outlet />
+      <div className=" pt-10">
+        <Outlet />
+      </div>
     </>
   );
 };

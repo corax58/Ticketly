@@ -33,7 +33,11 @@ const DeleteTicket = () => {
   return (
     <AlertDialog>
       <AlertDialogTrigger>
-        <Button variant={"destructive"} className=" w-32 font-semibold">
+        <Button
+          variant={"destructive"}
+          className=" w-36 font-semibold"
+          disabled={isPending}
+        >
           {isPending && <Loader />}
           Delete
         </Button>
