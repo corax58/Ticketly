@@ -1,6 +1,5 @@
 import api from "@/api/axiosClient";
 import { loginUser } from "@/store/features/authSlice";
-import axios from "axios";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
