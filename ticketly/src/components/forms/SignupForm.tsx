@@ -1,22 +1,21 @@
-import { useAuth } from "@/hooks/useAuth";
-import { signupSchema } from "@/schemas/userSchema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "../ui/input";
+import { useAuth } from "@/hooks/useAuth";
+import { signupSchema } from "@/schemas/userSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router";
+import { toast } from "sonner";
+import { z } from "zod";
 import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 
 const SignupForm = () => {
   const { isLoading, error, isError, signup, isSuccess } = useAuth();

@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router";
-import { Ticket } from "@/types/ticket";
-import { QueryClient, useMutation } from "@tanstack/react-query";
 import api from "@/api/axiosClient";
+import { QueryClient, useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router";
 
 export function useDeleteTicket(id: string) {
   const queryClient = new QueryClient();

@@ -1,8 +1,8 @@
 import { Bug } from "lucide-react";
-import "./App.css";
-import showcase from "/images/showcase.png";
-import { Button } from "./components/ui/button";
 import { Link } from "react-router";
+import "./App.css";
+import { Button } from "./components/ui/button";
+import showcase from "/images/showcase.png";
 
 function App() {
   return (

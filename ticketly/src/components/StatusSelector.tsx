@@ -5,12 +5,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import Badge from "./Badge";
-import { Status } from "@/types/ticket";
-import { useParams } from "react-router";
 import { useChangeStatus } from "@/hooks/useChangeStatus";
+import { Status } from "@/types/ticket";
 import { useEffect } from "react";
+import { useParams } from "react-router";
 import { toast } from "sonner";
+import Badge from "./Badge";
 
 interface Props {
   status: Status;

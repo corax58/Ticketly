@@ -1,7 +1,3 @@
-import { ticketSchema } from "@/schemas/ticketSchema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
 import {
   Form,
   FormControl,
@@ -10,16 +6,20 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { ticketSchema } from "@/schemas/ticketSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-import SimpleMDE from "react-simplemde-editor";
-import "easymde/dist/easymde.min.css";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
 import { useCreateTicket } from "@/hooks/useCreateTicket";
-import { useEffect } from "react";
-import { toast } from "sonner";
-import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
+import "easymde/dist/easymde.min.css";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import SimpleMDE from "react-simplemde-editor";
+import { toast } from "sonner";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 
 const NewTicketForm = () => {
   const { mutate, isPending, error, isError, isSuccess } = useCreateTicket();

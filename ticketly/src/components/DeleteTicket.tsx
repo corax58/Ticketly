@@ -1,6 +1,3 @@
-import { useDeleteTicket } from "@/hooks/useDeleteTicket";
-import React, { useEffect } from "react";
-import { useParams } from "react-router";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -12,9 +9,12 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Button } from "./ui/button";
+import { useDeleteTicket } from "@/hooks/useDeleteTicket";
+import { useEffect } from "react";
+import { useParams } from "react-router";
 import { toast } from "sonner";
 import Loader from "./Loader";
+import { Button } from "./ui/button";
 
 const DeleteTicket = () => {
   let { id } = useParams();

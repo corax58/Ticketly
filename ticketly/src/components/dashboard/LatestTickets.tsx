@@ -1,15 +1,14 @@
-import Loader from "../Loader";
-import { useFetchLatestTickets } from "@/hooks/useFetchLatestTicket";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Badge from "../Badge";
+import { useFetchLatestTickets } from "@/hooks/useFetchLatestTicket";
 import { Link } from "react-router";
+import Badge from "../Badge";
+import Loader from "../Loader";
 
 const LatestTickets = () => {
   const { data, isLoading, isError } = useFetchLatestTickets();

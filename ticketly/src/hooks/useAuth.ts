@@ -1,8 +1,8 @@
-import { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router";
-import { useDispatch } from "react-redux";
 import { loginUser } from "@/store/features/authSlice";
+import axios from "axios";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 
 export function useAuth() {
   const [isLoading, setIsLoading] = useState(false);

@@ -1,5 +1,4 @@
 import NewTicketForm from "@/components/forms/NewTicketForm";
-import React from "react";
 
 const New = () => {
   return (

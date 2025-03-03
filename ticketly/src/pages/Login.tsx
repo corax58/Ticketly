@@ -1,13 +1,11 @@
-import React from "react";
+import LoginForm from "@/components/forms/LoginForm";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import LoginForm from "@/components/forms/LoginForm";
 
 const Login = () => {
   return (

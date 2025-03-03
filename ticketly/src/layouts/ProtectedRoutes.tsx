@@ -1,8 +1,6 @@
 import { loadUser } from "@/store/features/authSlice";
-import { RootState } from "@/store/store";
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router";
 
 const ProtectedRoutes = () => {

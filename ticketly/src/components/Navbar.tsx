@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { Bug, Menu, X } from "lucide-react";
-import UserPopover from "./UserPopover";
-import { Link, NavLink } from "react-router";
-import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
+import { Bug, Menu, X } from "lucide-react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { Link, NavLink } from "react-router";
+import UserPopover from "./UserPopover";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
