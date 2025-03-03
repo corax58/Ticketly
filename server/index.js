@@ -11,6 +11,10 @@ const app = express();
 const userRouter = require("./routes/user");
 const ticketRouter = require("./routes/ticket");
 const dashboardRouter = require("./routes/dashboard");
+const {
+  authorizeRole,
+  authenticateUser,
+} = require("./middlewares/authMiddleware");
 
 //middlewares
 app.use(cors());
@@ -18,8 +22,13 @@ app.use(express.json());
 
 //routes
 app.use("/api/user", userRouter);
-app.use("/api/ticket", ticketRouter);
-app.use("/api/dashboard", dashboardRouter);
+app.use("/api/ticket", authenticateUser, ticketRouter);
+app.use(
+  "/api/dashboard",
+  authenticateUser,
+  authorizeRole("admin"),
+  dashboardRouter
+);
 
 mongoose
   .connect(process.env.MONGO_URI)

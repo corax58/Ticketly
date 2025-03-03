@@ -6,12 +6,16 @@ const {
   updateTicket,
   deleteTicket,
 } = require("../controllers/ticketController");
+const {
+  authenticateUser,
+  authorizeRole,
+} = require("../middlewares/authMiddleware");
 
 const router = express.Router();
 
-router.get("/", getAllTickets);
+router.get("/", authorizeRole("admin"), getAllTickets);
 router.get("/:id", getTicketById);
-router.patch("/:id", updateTicket);
+router.patch("/:id", authorizeRole("admin"), updateTicket);
 router.delete("/:id", deleteTicket);
 router.post("/", createTicket);
 

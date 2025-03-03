@@ -3,8 +3,8 @@ const Ticket = require("../models/ticketModel");
 
 const jwt = require("jsonwebtoken");
 
-const createToken = (_id) => {
-  return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "3d" });
+const createToken = (_id, role) => {
+  return jwt.sign({ _id, role }, process.env.SECRET, { expiresIn: "3d" });
 };
 
 const loginUser = async (req, res) => {
@@ -13,7 +13,7 @@ const loginUser = async (req, res) => {
   try {
     const user = await User.login(email, password);
 
-    const token = createToken(user._id);
+    const token = createToken(user._id, user.role);
 
     res.status(200).json({
       _id: user._id,
@@ -32,12 +32,13 @@ const signupUser = async (req, res) => {
   try {
     const user = await User.signup(name, email, password);
 
-    const token = createToken(user._id);
+    const token = createToken(user._id, user.role);
 
     res.status(200).json({
       _id: user._id,
       name: user.name,
       email: user.email,
+      role: user.role,
 
       token,
     });
