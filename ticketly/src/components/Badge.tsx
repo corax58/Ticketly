@@ -8,11 +8,11 @@ export interface Props {
 const Badge = ({ status }: Props) => {
   let color = "";
   if (status == "open") {
-    color = "bg-blue-300";
+    color = "bg-green-500";
   } else if (status == "inprogress") {
-    color = "bg-yellow-300";
+    color = "bg-yellow-400";
   } else if (status == "closed") {
-    color = "bg-green-300";
+    color = "bg-gray-400";
   }
   return (
     <div
