@@ -1,14 +1,19 @@
 import Badge from "@/components/Badge";
-import { useFetchSingleTicket } from "@/hooks/useFetchSingleTicket";
-import { useParams } from "react-router";
-import ReactMarkdown from "react-markdown";
 import DeleteTicket from "@/components/DeleteTicket";
-import StatusSelector from "@/components/StatusSelector";
 import Loader from "@/components/Loader";
+import StatusSelector from "@/components/StatusSelector";
+import { useFetchSingleTicket } from "@/hooks/useFetchSingleTicket";
+import { RootState } from "@/store/store";
+import ReactMarkdown from "react-markdown";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router";
 
-const TicketPage = ({ isAdminRoute }: { isAdminRoute: boolean }) => {
+const TicketPage = () => {
   let { id } = useParams();
-  const { data, error, isError, isLoading } = useFetchSingleTicket(id!);
+  const { data, isError, isLoading } = useFetchSingleTicket(id!);
+  const user = useSelector((state: RootState) => state.auth.user);
+
+  const isAdmin = user?.role == "admin";
 
   if (isError)
     return <p className=" text-red-500 p-10">Something went wrong</p>;
@@ -41,8 +46,8 @@ const TicketPage = ({ isAdminRoute }: { isAdminRoute: boolean }) => {
             </div>
           </div>
           <div className=" container flex md:flex-col items-center gap-5 w-max justify-end  md:pb-10  ">
-            <DeleteTicket />
-            <StatusSelector status={data.status} />
+            {data.user == user?._id && <DeleteTicket />}
+            {isAdmin && <StatusSelector status={data.status} />}
           </div>
         </div>
       </div>
