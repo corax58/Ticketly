@@ -18,7 +18,7 @@ interface Props {
 const StatusSelector = ({ status }: Props) => {
   let { id } = useParams();
 
-  const { isSuccess, isError, mutate } = useChangeStatus(id!);
+  const { isSuccess, isError, mutate, isPending } = useChangeStatus(id!);
 
   const onSubmit = async (values: string) => {
     mutate(values);
@@ -33,8 +33,8 @@ const StatusSelector = ({ status }: Props) => {
   }, [isSuccess, isError]);
 
   return (
-    <Select defaultValue={status} onValueChange={onSubmit}>
-      <SelectTrigger className=" w-32">
+    <Select defaultValue={status} onValueChange={onSubmit} disabled={isPending}>
+      <SelectTrigger className="  w-36">
         <SelectValue placeholder="Theme" />
       </SelectTrigger>
       <SelectContent>
