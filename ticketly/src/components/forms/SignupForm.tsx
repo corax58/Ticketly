@@ -85,7 +85,7 @@ const SignupForm = () => {
           />
           <div className=" flex gap-1">
             <p>Already have an Account? </p>
-            <Link to={"/signup"} className="font-semibold hover:underline">
+            <Link to={"/login"} className="font-semibold hover:underline">
               Login
             </Link>
           </div>
